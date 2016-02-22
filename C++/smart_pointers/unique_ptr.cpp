@@ -62,6 +62,7 @@ int main(int argc, char * args[]) {
   std::cout << "Allocate single A object and assign it to a shared_ptr" << std::endl;
   std::shared_ptr<A> ptrA2 = makeA();
   ptrA2->foo();
+
   */
   std::cout << "Allocate std::vector of A objects" << std::endl;
   std::vector< unique_ptr<A> > aVector;
