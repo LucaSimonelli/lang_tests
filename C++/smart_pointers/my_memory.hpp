@@ -7,13 +7,14 @@ class unique_ptr {
   public:
     unique_ptr();
     unique_ptr(T *ptr);
-    unique_ptr(const unique_ptr<T> & other); // disable copy constructor
+    unique_ptr(const unique_ptr<T> & other) = delete;
     unique_ptr(unique_ptr<T> && other);
-    unique_ptr<T> & operator=(const unique_ptr<T> & other); // disalbed
+    unique_ptr<T> & operator=(const unique_ptr<T> & other) = delete;
     unique_ptr<T> & operator=(unique_ptr<T> && other);
     ~unique_ptr();
 
     void reset(T *ptr);
+    T * release();
     T * operator->() const;
   private:
     void deletePtr();
@@ -32,6 +33,7 @@ unique_ptr<T>::~unique_ptr() {
   deletePtr();
 }
 
+/*
 template<typename T>
 unique_ptr<T>::unique_ptr(const unique_ptr<T> & other) {
   if (this != &other) {
@@ -43,7 +45,7 @@ unique_ptr<T>::unique_ptr(const unique_ptr<T> & other) {
     //other.mPtr = nullptr;
   }
 }
-
+*/
 
 template<typename T>
 unique_ptr<T>::unique_ptr(unique_ptr<T> && other) {
@@ -68,6 +70,13 @@ template<typename T>
 void unique_ptr<T>::reset(T *ptr) {
   deletePtr();
   mPtr = ptr;
+}
+
+template<typename T>
+T * unique_ptr<T>::release() {
+  T * ptr = mPtr;
+  mPtr = nullptr;
+  return ptr;
 }
 
 template<typename T>

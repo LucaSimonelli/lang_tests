@@ -1,10 +1,11 @@
-//#include <memory>
-#include "my_memory.hpp"
+#include <memory>
+//#include "my_memory.hpp"
 #include <iostream>
 #include <vector>
 
-//using std::unique_ptr;
-using owesome::unique_ptr;
+using std::unique_ptr;
+//using owesome::unique_ptr;
+
 
 class A {
   public:
@@ -14,6 +15,8 @@ class A {
   private:
   int a;
 };
+
+static unique_ptr<A> gPtrA(new A);
 
 // unique_ptr for single object
 auto makeA() {
