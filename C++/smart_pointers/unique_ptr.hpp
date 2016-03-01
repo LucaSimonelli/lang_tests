@@ -1,14 +1,16 @@
 #pragma once
 
-namespace owesome {
+namespace awesome {
 
 template<typename T>
 class unique_ptr {
   public:
     unique_ptr();
     unique_ptr(T *ptr);
+    // A unique_ptr cannot be copied
     unique_ptr(const unique_ptr<T> & other) = delete;
     unique_ptr(unique_ptr<T> && other);
+    // A unique_ptr cannot be copied
     unique_ptr<T> & operator=(const unique_ptr<T> & other) = delete;
     unique_ptr<T> & operator=(unique_ptr<T> && other);
     ~unique_ptr();

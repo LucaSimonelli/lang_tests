@@ -1,5 +1,7 @@
 #pragma once
 
+#include "unique_ptr.hpp"
+
 namespace awesome {
 
 class ControlBlock {
@@ -14,6 +16,7 @@ class ControlBlock {
       }
       return mRefCount;
     }
+  private:
     int mRefCount;
 };
 
@@ -24,6 +27,7 @@ class shared_ptr {
     shared_ptr(T *ptr);
     shared_ptr(const shared_ptr<T> & other);
     shared_ptr(shared_ptr<T> && other);
+    shared_ptr(unique_ptr<T> && other);
     shared_ptr<T> & operator=(const shared_ptr<T> & other);
     shared_ptr<T> & operator=(shared_ptr<T> && other);
     ~shared_ptr();
@@ -45,6 +49,13 @@ template<typename T>
 shared_ptr<T>::shared_ptr(T *ptr): mPtr(ptr) {
   mControlBlockPtr = new ControlBlock;
   mControlBlockPtr->incRefCount();
+}
+
+template<typename T>
+shared_ptr<T>::shared_ptr(unique_ptr<T> && other) {
+  mControlBlockPtr = new ControlBlock;
+  mControlBlockPtr->incRefCount();
+  mPtr = other.release();
 }
 
 template<typename T>
