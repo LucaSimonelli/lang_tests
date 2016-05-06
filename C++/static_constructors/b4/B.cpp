@@ -1,13 +1,14 @@
 #include "B.h"
 #include <iostream>
 
-const std::unordered_map<int, std::string> B::getMap() {
-  static const std::unordered_map<int, std::string> map = {
-    {0, std::string("zero")},
-    {1, std::string("one")},
-    {2, std::string("two")}
-  };
-  return map;
+const std::unordered_map<int, std::string> & B::getMap() {
+  static const std::unordered_map<int, std::string> * map =
+    new std::unordered_map<int, std::string> {
+      {0, std::string("zero")},
+      {1, std::string("one")},
+      {2, std::string("two")}
+    };
+  return *map;
 }
 
 B myB;

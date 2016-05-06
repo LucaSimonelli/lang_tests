@@ -7,5 +7,5 @@ class B {
   B(const B & other);
   B(B && other);
   ~B();
-  static const std::unordered_map<int, std::string> getMap();
+  static const std::unordered_map<int, std::string> & getMap();
 };

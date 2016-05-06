@@ -4,6 +4,6 @@
 
 int main(int argc, char *argv[]) {
   std::cout << "main" << std::endl;
-  B b;
+  //B b;
   return 0;
 }
