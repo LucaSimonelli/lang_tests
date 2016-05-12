@@ -8,5 +8,5 @@ class B {
   B(const B & other);
   B(B && other);
   ~B();
-  static const std::unique_ptr<std::unordered_map<int, std::string>> & getMap();
+  static const std::shared_ptr<std::unordered_map<int, std::string>> & getMap();
 };

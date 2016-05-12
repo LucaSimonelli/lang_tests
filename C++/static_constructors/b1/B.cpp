@@ -1,20 +1,12 @@
 #include "A.h"
 #include "B.h"
 #include <iostream>
-#include <exception>
 
-const std::unordered_map<int, std::string> B::map = {
-  {0, std::string("zero")},
-  {1, std::string("one")},
-  {2, std::string("two")}
+const std::unordered_map<int, std::string> B::mMap = {
+  {0, std::string("zero")}
 };
 
 B::B() {
-  //const auto & it = map.find(0);
-  //if (it == map.end()) {
-  //  throw std::exception();
-  //}
-  std::cout << "B::B() B::map[0]=" << B::map.at(0) << std::endl;
+  std::cout << "B::B() B::mMap[0]=" << B::mMap.at(0) << std::endl;
 }
-
 

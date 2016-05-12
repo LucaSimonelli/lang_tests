@@ -1,10 +1,10 @@
 #pragma once
 #include <unordered_map>
-#include "B.h"
 
+class B;
 
 class A {
   public:
   A();
-  static const std::unordered_map<int,B> map;
+  static const std::unordered_map<int,B> mMap;
 };
