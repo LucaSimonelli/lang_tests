@@ -9,7 +9,7 @@ ex_four:
 ex_five:
 	clang++ -std=c++11 -g main.cpp b5/C.cpp A.cpp b5/B.cpp -I./ -I./b5/ -o main
 ex_four_assembly:
-	clang++ -std=c++11 -S main.cpp b4/C.cpp A.cpp b4/B.cpp -I./ -I./b4/
+	clang++ -std=c++11 -S -fno-stack-protector main.cpp b4/C.cpp A.cpp b4/B.cpp -I./ -I./b4/
 
 clean:
 	rm main
