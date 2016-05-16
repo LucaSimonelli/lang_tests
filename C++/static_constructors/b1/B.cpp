@@ -7,6 +7,6 @@ const std::unordered_map<int, std::string> B::mMap = {
 };
 
 B::B() {
-  std::cout << "B::B() B::mMap[0]=" << B::mMap.at(0) << std::endl;
+  std::cout << "B::B() B::mMap.at(0)=" << B::mMap.at(0) << std::endl;
 }
 
