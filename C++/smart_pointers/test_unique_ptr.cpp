@@ -69,11 +69,15 @@ int main(int argc, char * args[]) {
   std::cout << "Allocate array of A objects" << std::endl;
   auto ptrArrayA = makeArrayAWithDelete(2);
   ptrArrayA[0].foo();
-  std::cout << "Allocate single A object and assign it to a shared_ptr" << std::endl;
-  std::shared_ptr<A> ptrA2 = makeA();
-  ptrA2->foo();
-
   */
+  //std::cout << "Allocate single A object and assign it to a shared_ptr" << std::endl;
+  std::cout << "Allocate single A object and assign it to a unique_ptr" << std::endl;
+  std::unique_ptr<A> ptrA2 = makeA();
+  std::unique_ptr<A> ptrA3 = ptrA2;
+  //std::shared_ptr<A> ptrA2 = makeA();
+  ptrA2->foo();
+  ptrA3->foo();
+
   std::cout << "Allocate std::vector of A objects" << std::endl;
   std::vector< unique_ptr<A> > aVector;
   //aVector[0] = makeA(); // Error! Segmentation fault!

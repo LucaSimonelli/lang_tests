@@ -7,5 +7,10 @@ die() {
     fi
 }
 
+
+if [[ ! $# -eq 1 ]]; then
+    die "error: one comand line arg is required"
+    exit 1
+fi
 die "Message1"
 die "Message2" 3

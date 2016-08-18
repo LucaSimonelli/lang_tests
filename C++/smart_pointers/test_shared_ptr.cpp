@@ -25,6 +25,8 @@ class A {
 int main(int argc, char *argv[]) {
   shared_ptr<A> ptrShared1(new A("S1"));
   ptrShared1->foo();
+  const shared_ptr<A> ptrShared3 = ptrShared1;
+  return 0;
   unique_ptr<A> ptrUnique1(new A("U1"));
   // std::move provides a universal reference of the unique pointer
   shared_ptr<A> ptrShared2(std::move(ptrUnique1));
